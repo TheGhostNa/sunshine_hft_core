@@ -1,36 +1,19 @@
-import os
-from dotenv import load_dotenv
+from strategies.rsi_strategy import generate_rsi_signal
+import yfinance as yf
 
-# Load all credentials
-load_dotenv()
-
-# --- Imports from your modules ---
-from strategies.rsi_strategy import rsi_signal
-from strategies.macd_bb_strategy import macd_bb_signal
-from execution.executor import execute_trade
-from meta.strategy_combiner import combined_signal
-from notification.alert import send_alert
-from logger.trade_logger import log_trade
-from fetchers.live_price_fetcher import fetch_live_price
-from strategies.rsi_strategy import rsi_strategy
-from execution.order_executor import execute_order
+def fetch_price_data(symbol="AAPL", interval="1d", lookback="30d"):
+    df = yf.download(symbol, period=lookback, interval=interval)
+    if df.empty:
+        raise ValueError("No data fetched. Check symbol or network.")
+    return df
 
 def main():
-    print("🚀 SUNSHINE HFT CORE SYSTEM LAUNCHED")
-
-    symbol = "AAPL"
-    price = fetch_live_price(symbol)
-    rsi = rsi_signal(symbol)
-    macd = macd_bb_signal(symbol)
-    
-    signal = combined_signal(rsi, macd)
-
-    if signal in ["buy", "sell"]:
-        result = execute_trade(symbol, signal)
-        send_alert(f"{signal.upper()} order placed for {symbol} at {price}")
-        log_trade(symbol, price, signal, result)
-    else:
-        print("📉 No signal generated. Market conditions not met.")
+    try:
+        df = fetch_price_data()
+        signal = generate_rsi_signal(df)
+        print(f"Current RSI Signal: {signal}")
+    except Exception as e:
+        print(f"⚠️ Error in main(): {e}")
 
 if __name__ == "__main__":
     main()
