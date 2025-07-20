@@ -5,13 +5,15 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # --- Imports from your modules ---
-from fetchers.live_price_fetcher import fetch_live_price
 from strategies.rsi_strategy import rsi_signal
 from strategies.macd_bb_strategy import macd_bb_signal
 from execution.executor import execute_trade
 from meta.strategy_combiner import combined_signal
 from notification.alert import send_alert
 from logger.trade_logger import log_trade
+from fetchers.live_price_fetcher import fetch_live_price
+from strategies.rsi_strategy import rsi_strategy
+from execution.order_executor import execute_order
 
 def main():
     print("🚀 SUNSHINE HFT CORE SYSTEM LAUNCHED")

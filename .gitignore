@@ -1,4 +1,4 @@
-# 🌞 SUNSHINE_HFT_CORE — FULL ADVANCED .GITIGNORE (Chronark + OROS Ready)
+# 🌞 SUNSHINE_HFT_CORE — FULL ADVANCED .GITIGNORE (Chronark + OROS + Nirikshana Ready)
 
 # --- PYTHON CACHE & BUILD ---
 __pycache__/
@@ -151,5 +151,8 @@ oros_temp/
 oros_cache/
 oros_reinforce/
 oros_backups/
+
+# --- NIRIKSHANA NEW MODULE (Repo-Linked) ---
+nirikshana/
 
 # ☀️ END OF LINE ☀️
