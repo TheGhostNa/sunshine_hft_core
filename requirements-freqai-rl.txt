@@ -1,11 +1,19 @@
-# Include all requirements to run the bot.
+# Include all core FreqAI requirements (general)
 -r requirements-freqai.txt
 
-# Required for freqai-rl
+# Required for FreqAI with Reinforcement Learning (RL) module
+
+# Torch 2.7.1 works for Windows/Linux, but NOT on MacOS x86_64
 torch==2.7.1; sys_platform != 'darwin' or platform_machine != 'x86_64'
-gymnasium==0.29.1
-# SB3 >=2.5.0 depends on torch 2.3.0 - which implies it dropped support x86 macos
+
+# Compatible with stable_baselines3 and sb3_contrib
+gymnasium==1.2.0
+
+# SB3 2.6.0 requires torch>=2.3.0 and drops support for x86 macOS
 stable_baselines3==2.6.0; sys_platform != 'darwin' or platform_machine != 'x86_64'
+
+# SB3-contrib (includes PPO-Lag, TRPO, etc.)
 sb3_contrib>=2.2.1
-# Progress bar for stable-baselines3 and sb3-contrib
+
+# Optional but useful for visualizing training progress
 tqdm==4.67.1

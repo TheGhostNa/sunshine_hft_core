@@ -1,26 +1,34 @@
 import os
-import time
-
 from dotenv import load_dotenv
 
-from realtime_trading.paper_trader import PaperTrader
-
+# Load all credentials
 load_dotenv()
 
+# --- Imports from your modules ---
+from fetchers.live_price_fetcher import fetch_live_price
+from strategies.rsi_strategy import rsi_signal
+from strategies.macd_bb_strategy import macd_bb_signal
+from execution.executor import execute_trade
+from meta.strategy_combiner import combined_signal
+from notification.alert import send_alert
+from logger.trade_logger import log_trade
 
-print(f"🧪 Loaded Key: {os.getenv('APCA_API_KEY_ID')}")
-print("🚀 Sunshine HFT starting...")
+def main():
+    print("🚀 SUNSHINE HFT CORE SYSTEM LAUNCHED")
 
-symbols = os.getenv("SYMBOLS", "AAPL").split(",")
-interval = int(os.getenv("INTERVAL", 60))
+    symbol = "AAPL"
+    price = fetch_live_price(symbol)
+    rsi = rsi_signal(symbol)
+    macd = macd_bb_signal(symbol)
+    
+    signal = combined_signal(rsi, macd)
 
-while True:
-    for symbol in symbols:
-        print(f"\n📈 Running trader for {symbol}")
-        try:
-            trader = PaperTrader(symbol)
-            trader.run()
-        except Exception as e:
-            print(f"❌ Error trading {symbol}: {e}")
-    print(f"\n⏱️ Sleeping {interval}s before next loop...")
-    time.sleep(interval)
+    if signal in ["buy", "sell"]:
+        result = execute_trade(symbol, signal)
+        send_alert(f"{signal.upper()} order placed for {symbol} at {price}")
+        log_trade(symbol, price, signal, result)
+    else:
+        print("📉 No signal generated. Market conditions not met.")
+
+if __name__ == "__main__":
+    main()
