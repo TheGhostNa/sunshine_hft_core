@@ -1,4 +1,4 @@
-# 🌞 SUNSHINE_HFT_CORE — FULL ADVANCED .GITIGNORE
+# 🌞 SUNSHINE_HFT_CORE — FULL ADVANCED .GITIGNORE (Chronark + OROS Ready)
 
 # --- PYTHON CACHE & BUILD ---
 __pycache__/
@@ -100,7 +100,7 @@ Thumbs.db
 ehthumbs.db
 Desktop.ini
 
-# --- DIST / COMPILED ---
+# --- DIST / COMPILED / BINARIES ---
 build/
 dist/
 *.o
@@ -135,5 +135,21 @@ sunshine_hft_core/private_tests/
 sunshine_hft_core/__logs_internal/
 sunshine_hft_core/.internal_results/
 sunshine_hft_core/sandbox/
+sunshine_hft_core/allocators_rust/target/
+sunshine_hft_core/allocators_rust/debug/
+sunshine_hft_core/allocators_rust/release/
+sunshine_hft_core/allocators_rust/.cargo/
+
+# --- CHRONARK + OROS AI SYSTEMS ---
+chronark_ai/
+chronark_memory/
+chronark_logs/
+chronark_states/
+oros_core/
+oros_dreams/
+oros_temp/
+oros_cache/
+oros_reinforce/
+oros_backups/
 
 # ☀️ END OF LINE ☀️
