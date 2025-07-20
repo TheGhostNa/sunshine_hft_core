@@ -1,0 +1,139 @@
+# 🌞 SUNSHINE_HFT_CORE — FULL ADVANCED .GITIGNORE
+
+# --- PYTHON CACHE & BUILD ---
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+*.egg-info/
+*.egg
+*.whl
+*.log
+*.tmp
+*.bak
+*.sqlite3
+
+# --- VIRTUAL ENVIRONMENTS ---
+.venv/
+venv/
+env/
+ENV/
+*.envrc
+
+# --- NOTEBOOKS / JUPYTER ---
+.ipynb_checkpoints/
+*.ipynb
+*.out
+*.svg
+*.pdf
+*.png
+
+# --- STRATEGY / FINANCIAL DATA FILES ---
+*.csv
+*.json
+*.jsonl
+*.h5
+*.xlsx
+*.pkl
+*.npy
+*.npz
+*.dat
+data/
+raw_data/
+checkpoints/
+backtest_output/
+signals/
+models/
+results/
+logs/
+cache/
+debug/
+archive/
+artifacts/
+
+# --- ENVIRONMENT / SECRETS ---
+.env
+.env.*
+*.key
+*.pem
+*.crt
+secrets.*
+apikeys.*
+auth.json
+config.yml
+config_local.yaml
+credentials.yml
+
+# --- DOCKER / CONTAINERS ---
+docker-compose.yml
+.dockerignore
+docker/
+.docker/
+*.tar
+*.tar.gz
+*.img
+*.container
+
+# --- TEST / COVERAGE ---
+.coverage
+*.cover
+coverage.xml
+htmlcov/
+tests/__pycache__/
+
+# --- EDITORS / IDEs / TOOLS ---
+.vscode/
+.idea/
+*.code-workspace
+*.sublime-project
+*.sublime-workspace
+*.tmproj
+*.project
+*.classpath
+*.settings/
+*.c9/
+
+# --- OS TRASH FILES ---
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# --- DIST / COMPILED ---
+build/
+dist/
+*.o
+*.a
+*.so
+*.dylib
+*.dll
+*.exe
+
+# --- MISC DEV JUNK ---
+*.swp
+*.bak~
+*.tmp
+*.orig
+*.log.old
+*.log.*
+
+# --- GIT / VERSION CONTROL SAFETY ---
+.git/
+!.gitignore
+
+# --- KEEP EMPTY DIRS SAFELY ---
+!user_data/logs/.gitkeep
+!user_data/hyperopts/.gitkeep
+!data/.gitkeep
+!notebooks/.gitkeep
+!strategies/.gitkeep
+!models/.gitkeep
+
+# --- SUNSHINE CORE CUSTOM PATHS ---
+sunshine_hft_core/private_tests/
+sunshine_hft_core/__logs_internal/
+sunshine_hft_core/.internal_results/
+sunshine_hft_core/sandbox/
+
+# ☀️ END OF LINE ☀️

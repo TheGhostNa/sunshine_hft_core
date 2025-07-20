@@ -1,0 +1,5 @@
+import os
+
+ALPACA_API_KEY = os.getenv("APCA_API_KEY_ID")
+ALPACA_SECRET_KEY = os.getenv("APCA_API_SECRET_KEY")
+ALPACA_BASE_URL = os.getenv("APCA_API_BASE_URL")
